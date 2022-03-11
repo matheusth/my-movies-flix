@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-image: url("helmet.jpg");
+	background-size: cover;
+	background-position: fixed;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto Mono", monospaced;
+	color: white;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	background-color: #333333cc;
+	min-height: 100vh;
+	max-width: 100vw;
+	padding: 0;
+	box-sizing: content-box;
+}
+
+.page-title {
+	font-weight: 600;
+	margin-top: 2rem;
+}
+
+.brand {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+}
+.brand .highlight {
+	background-color: #B71C1C;
+	padding: 0.2rem 0.5rem;
+	border-radius: 5px;
+	font-weight: 600;
+}
+
+.movie-list {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	margin-bottom: 2rem;
+	box-sizing: border-box;
+}
+
+.movie-list li {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+.movie-list li img {
+	width: 180px;
+	height: 275px;
+}
+
+
+.movie-list li h2 {
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.input-control {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.input-control input {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 275px;
+	height: 1.2rem;
+	padding: 0.2rem;
+}
+
+.input-control button {
+	border: none;
+	background-color: #dd1111;
+	color: #fff;
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0 1.5rem 0;
+	font-family: "Roboto Mono", monospace;
+	transition: all 200ms linear;
+}
+.input-control button:hover {
+	background-color: #550707;
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.btn {
+	border: none;
+	background-color: #ccc;
+	color:#222;
+	padding: 0.3rem;
+	font-weight: bold;
+	transition: all 200ms linear;
+}
+
+.btn:hover {
+	transform: scaleY(1.2);
+	cursor: pointer;
+}
+
+.btn-danger {
+	background-color: #dd1111;
+	color: #fff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.btn-danger:hover {
+	background-color: #B71C1C;
+}
