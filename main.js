@@ -2,12 +2,22 @@ let movies = [];
 
 function createMovieItemEl(movie, index) {
   let movieCover = new Image();
-  movieCover.src = movie;
   let movieItemEl = document.createElement("li");
   let movieRemoveButton = document.createElement("button");
-  movieRemoveButton.classList.add("btn-danger", "btn");
+  let movieTitleEl = document.createElement("h2");
+
+  movieCover.src = movie.coverURL;
+
   movieRemoveButton.innerText = "Remover";
+  movieTitleEl.innerText = movie.title;
+
   movieRemoveButton.onclick = removeMovieCover.bind(this, index);
+
+  movieTitleEl.classList.add("movie-title");
+  movieRemoveButton.classList.add("btn-danger", "btn");
+
+
+  movieItemEl.appendChild(movieTitleEl);
   movieItemEl.appendChild(movieCover);
   movieItemEl.appendChild(movieRemoveButton);
 
@@ -32,21 +42,28 @@ function movieExists(imageURL) {
 
 function addMovieCover() {
   let imageURLEl = document.getElementById("img-url");
+  let movieTitleEl = document.getElementById("movie-title");
   let imageURL = imageURLEl.value;
+  let movieTitle = movieTitleEl.value;
 
   if (validateMovieURL(imageURL)) {
     if (movieExists(imageURL)) {
       alert("O filme já esta cadastrado!");
     } else {
-      movies.push(imageURL);
+      let movie = {
+        title: movieTitle,
+        coverURL: imageURL,
+      };
+      movies.push(movie);
       drawMovieListEl();
       saveToLocalStorage();
     }
-  }else{
+  } else {
     alert("O endereço da capa do filme é invalido!!");
   }
 
   imageURLEl.value = "";
+  movieTitleEl.value = "";
 }
 
 function removeMovieCover(index, event) {
@@ -57,14 +74,14 @@ function removeMovieCover(index, event) {
 }
 
 function saveToLocalStorage() {
-  serialized_movies = movies.toString();
-  window.localStorage.setItem("movies", serialized_movies);
+  serialized_movies = JSON.stringify(movies);
+  window.localStorage.setItem("movies_json", serialized_movies);
 }
 
 function loadFromLocalStorage() {
-  let serialized_movies = window.localStorage.getItem("movies");
+  let serialized_movies = window.localStorage.getItem("movies_json");
   if (serialized_movies) {
-    movies = serialized_movies.split(",");
+    movies = JSON.parse(serialized_movies);
   }
 }
 
